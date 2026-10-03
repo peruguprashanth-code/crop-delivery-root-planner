@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crop Delivery Route Planner</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <h1>🚜 Crop Delivery Route Planner</h1>
+            <p>Plan efficient routes from farms to markets</p>
+        </div>
+    </header>
+
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Input Card -->
+        <section class="control-card">
+
+            <h2>Route Planning</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="start">Starting Location</label>
+
+                    <select id="start">
+                        <option value="Farm A">Farm A</option>
+                        <option value="Farm B">Farm B</option>
+                        <option value="Farm C">Farm C</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+
+                    <select id="destination">
+                        <option value="Market X">Market X</option>
+                        <option value="Market Y">Market Y</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="algorithm">Algorithm</label>
+
+                    <select id="algorithm">
+                        <option value="dijkstra">Dijkstra</option>
+                        <option value="greedy">Greedy</option>
+                        <option value="tsp">TSP</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="cost">Cost per KM (₹)</label>
+
+                    <input type="number" id="cost" value="10" min="1">
+                </div>
+
+            </div>
+
+
+            <button class="route-btn" onclick="calculateRoute()">
+                🚀 Find Route
+            </button>
+
+        </section>
+
+
+        <!-- Map + Results -->
+        <section class="content-grid">
+
+            <!-- Map -->
+            <div class="map-card">
+
+                <div class="card-title">
+                    <h2>🗺️ Delivery Map</h2>
+                </div>
+
+                <div id="map"></div>
+
+            </div>
+
+
+            <!-- Results -->
+            <div class="result-card">
+
+                <h2>📊 Route Details</h2>
+
+                <div class="result-box">
+
+                    <span class="result-label">
+                        Algorithm
+                    </span>
+
+                    <strong id="resultAlgorithm">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span class="result-label">
+                        Route
+                    </span>
+
+                    <strong id="resultRoute">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <span>Distance</span>
+                        <strong id="resultDistance">
+                            0 km
+                        </strong>
+                    </div>
+
+
+                    <div class="stat">
+                        <span>Travel Cost</span>
+                        <strong id="resultCost">
+                            ₹0
+                        </strong>
+                    </div>
+
+
+                    <div class="stat">
+                        <span>Locations</span>
+                        <strong id="resultLocations">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="steps">
+
+                    <h3>🔎 Algorithm Decisions</h3>
+
+                    <ul id="decisionList">
+                        <li>Select an algorithm to see the route.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Comparison -->
+        <section class="comparison-card">
+
+            <h2>📈 Algorithm Comparison</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Route</th>
+                        <th>Distance</th>
+                        <th>Cost</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="comparisonBody">
+
+                    <tr>
+                        <td colspan="4">
+                            Calculate a route to see comparison.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <!-- Our JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
